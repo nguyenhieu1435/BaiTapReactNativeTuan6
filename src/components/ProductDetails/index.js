@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { View, Text, SafeAreaView, Image, Pressable } from 'react-native'
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 
-export default function ProductDetail({ navigation }) {
+export default function ProductDetail({ navigation, route }) {
     const [productDetail, setProductDetail] = useState({
         name: "Điện Thoại Vsmart Joy 3 - Hàng chính hãng",
         star: 5,
@@ -35,7 +35,8 @@ export default function ProductDetail({ navigation }) {
         ]
     })
     const [productColorSelected, setProductColorSelected] = useState(()=> productDetail?.colors?.[0])
-   
+    
+
     return (
     <SafeAreaView style={{flex: 1, backgroundColor: "#fff", fontFamily: "roboto"}}>
         <View style={{flex: 1, paddingVertical :"15px", paddingHorizontal: "25px"}}>
@@ -100,7 +101,7 @@ export default function ProductDetail({ navigation }) {
                 </View>
                 <Pressable style={{borderRadius: "12px", justifyContent: "center", borderWidth: 1, marginTop: "20px"
                 , position: "relative", paddingHorizontal: "20px"}}
-                    onPress={()=> navigation.navigate("ChooseColorProduct", {productDetail, productColorSelected})}
+                    onPress={()=> navigation.navigate("ChooseColorProduct", {productDetail, productColorSelected, setProductColorSelected})}
                 >
                     <Text
                         style={{textAlign: "center", paddingVertical :"8px", fontSize: "15px", fontWeight: "500"}}
